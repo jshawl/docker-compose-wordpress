@@ -1,7 +1,7 @@
 # Docker Compose Wordpress
 
 ```
-docker-compose up
+docker compose up
 ```
 
 Visit http://localhost:8080/ in a browser. Or log in to the admin UI with
