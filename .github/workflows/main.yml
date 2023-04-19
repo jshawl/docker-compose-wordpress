@@ -11,3 +11,4 @@ jobs:
     - name: "docker compose up"
       run: |
         docker compose up -d --wait
+        curl -s http://localhost:8080 | grep wordpress.org
