@@ -11,4 +11,4 @@ jobs:
     - name: "docker compose up"
       run: docker compose up -d --wait
     - name: "check html presence"
-      run: sleep 10 && curl -s http://localhost:8080
+      run: curl -s http://localhost:8080
