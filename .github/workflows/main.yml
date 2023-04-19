@@ -1,0 +1,12 @@
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  test:
+    name: start container
+    runs-on: ubuntu-latest
+    steps:
+    - name: "docker compose up"
+      run: |
+        docker compose up -d --wait
