@@ -1,0 +1,3 @@
+#!/bin/bash
+
+docker compose exec db mysqldump -u wordpress -pwordpress wordpress > docker-entrypoint-initdb.d/schema.sql

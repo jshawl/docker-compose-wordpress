@@ -3,7 +3,7 @@ services:
     image: mariadb:10.6.4-focal
     command: '--default-authentication-plugin=mysql_native_password'
     volumes:
-      - db_data:/var/lib/mysql
+      - ./docker-entrypoint-initdb.d/schema.sql:/docker-entrypoint-initdb.d/1.sql
     restart: always
     environment:
       - MYSQL_ROOT_PASSWORD=wordpress
@@ -25,6 +25,17 @@ services:
       - WORDPRESS_DB_USER=wordpress
       - WORDPRESS_DB_PASSWORD=wordpress
       - WORDPRESS_DB_NAME=wordpress
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    expose:
+      - "40001"
+    ports:
+      - "40001:80"
+    environment:
+      - PMA_HOST=db
+      - PMA_PORT=3306
+      - PMA_USER=root
+      - PMA_PASSWORD=wordpress
 volumes:
-  db_data:
   wp-content:
