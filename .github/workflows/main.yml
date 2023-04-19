@@ -1,0 +1,14 @@
+on:
+  pull_request:
+    branches:
+      - main
+jobs:
+  test:
+    name: start container
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: "docker compose up"
+      run: docker compose up -d --wait
+    - name: "check html presence"
+      run: curl -s http://localhost:8080 | grep "Docker Compose Wordpress"
